@@ -7,18 +7,21 @@
 </head>
 <body>
     <h1>Your GeoGuessr Username is:</h1>
-    <p id="username">Username</p>
+    <p id="username"> Username</p>
+    <h2>Your Elo is:</h2>
+    <p id="elo">elo</p>
     <script>
-        async function fetchUsername(){
+        async function fetchUserdata(){
             try {
-                const response = await fetch ('/get-username');
+                const response = await fetch ('/get-userdata');
                 const data = await response.json();
-                document.getElementById('username').textContent = data.username;
+                document.getElementById('username').textContent = data.nick;
+                document.getElementById('elo').textContent = data.competitiveElo;
             } catch (error) {
-                console.error('Error fetching username:', error);
+                console.error('Error fetching user data:', error); 
             }
         }
-        fetchUsername();
+        fetchUserdata();
     </script>
 </body>
 </html>
